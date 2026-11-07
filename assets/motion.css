@@ -1,0 +1,23 @@
+/* Calm, brief motion. Native navigation remains usable without JavaScript. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:agp-out 160ms ease-out both}
+::view-transition-new(root){animation:agp-in 260ms ease-out both}
+@keyframes agp-out{to{opacity:0}}
+@keyframes agp-in{from{opacity:0}to{opacity:1}}
+html{scroll-behavior:smooth}
+a,button,summary{transition:background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease}
+nav a[aria-current=page]{text-decoration:underline;text-underline-offset:7px;text-decoration-color:#a7d1da}
+.entry-options a:hover,.entry-options a:focus-visible{background:#ffffff0a;border-color:#c5eaf4}
+.tour-target{transition:outline-color .25s ease}
+.tour-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tour-close{float:none;min-height:44px}
+.tour-progress{height:2px;background:#e2ebee;margin-top:18px}
+.tour-progress span{display:block;height:100%;background:#5b9eae;transition:width .3s ease}
+.tour-content h2:focus{outline:none}
+.touring .tour-panel{display:flex;flex-direction:column;overflow:hidden}
+.tour-content{overflow:auto;overscroll-behavior:contain;min-height:0;flex:1;padding-right:6px;scrollbar-width:thin}
+.tour-heading,.tour-progress,.tour-actions{flex-shrink:0}
+.tour-actions{position:static;margin:12px 0 0;padding:12px 0 0;border-top:1px solid #d9e3e7;background:white}
+.tour-actions button{min-height:44px}
+@media(max-width:700px){.touring .tour-panel{height:52svh;max-height:52svh;padding:14px 18px max(14px,env(safe-area-inset-bottom))}.tour-heading .tour-close{padding:6px 10px}.tour-progress{margin-top:8px}.tour-panel h2{margin-top:18px}.tour-actions{margin-top:8px;padding-top:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
